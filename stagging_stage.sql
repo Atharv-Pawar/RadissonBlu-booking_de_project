@@ -1,0 +1,12 @@
+USE RADISSONBLU_DB._HOTEL;
+
+-- Create File Format
+CREATE OR REPLACE FILE FORMAT _hotel_booking_csv
+    TYPE = 'CSV'
+    FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+    SKIP_HEADER = 1
+    NULL_IF = ('NULL', 'null', '');
+
+
+CREATE OR REPLACE STAGE STG_HOTEL_BOOKING
+    FILE_FORMAT = (FORMAT_NAME = _hotel_booking_csv);
